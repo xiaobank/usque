@@ -22,3 +22,6 @@ require (
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 )
+
+// Personal fork of Diniboy1123/usque — for learning and local experimentation.
+// Upstream: https://github.com/Diniboy1123/usque
