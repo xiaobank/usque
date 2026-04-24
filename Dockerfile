@@ -14,6 +14,9 @@ RUN go build -o usque -ldflags="-s -w" .
 # scratch won't be enough, because we need a cert store
 FROM alpine:latest
 
+# Keep the image updated with latest CA certificates
+RUN apk --no-cache add ca-certificates
+
 WORKDIR /app
 
 COPY --from=builder /app/usque /bin/usque
