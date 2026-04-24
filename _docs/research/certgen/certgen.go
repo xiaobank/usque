@@ -60,10 +60,11 @@ func main() {
 		log.Fatalf("Failed to open cert.pem for writing: %v", err)
 	}
 
+	// Extended cert validity to 2 years for longer local testing sessions
 	certDER, err := x509.CreateCertificate(rand.Reader, &x509.Certificate{
 		SerialNumber: big.NewInt(0),
 		NotBefore:    time.Now(),
-		NotAfter:     time.Now().Add(365 * 24 * time.Hour),
+		NotAfter:     time.Now().Add(2 * 365 * 24 * time.Hour),
 	}, &x509.Certificate{}, &privKey.PublicKey, privKey)
 	if err != nil {
 		log.Fatalf("Failed to create certificate: %v", err)
