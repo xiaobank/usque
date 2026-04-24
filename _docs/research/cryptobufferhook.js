@@ -51,8 +51,13 @@ Java.perform(function () {
                 /* OPENSSL_EXPORT CRYPTO_BUFFER *CRYPTO_BUFFER_new(const uint8_t *data, size_t len,
                                                 CRYPTO_BUFFER_POOL *pool)*/
 
+                var len = args[1].toInt32();
+                // Skip logging if buffer is empty to reduce noise
+                if (len <= 0) {
+                    return;
+                }
 
-                var data = Memory.readByteArray(args[0], args[1].toInt32());
+                var data = Memory.readByteArray(args[0], len);
                 var dataUint8 = new Uint8Array(data);
                 var dataHex = "";
                 for (var i = 0; i < dataUint8.length; i++) {
